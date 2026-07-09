@@ -1,0 +1,39 @@
+\chapter{Standard Arithmetic}\label{ch:arith}
+
+    \section{Integers}\label{sec:ints}
+        Recall that the \textbf{natural numbers} are defined as
+        \[\N = \{0,1,2,3,4,5,6,\ldots\}.\] 
+        The binary operation of addition $+:\N^2 \to \N$ takes two \textbf{addends}, say $a$ and $b$, and outputs a \textbf{sum}, $+(a,b)$, which we denote by $a + b$. We can observe (and prove, if desired) a few important properties about this operation.
+
+        \begin{theorem}[Properties of Addition]\label{thm:PoA}
+            When defined on \N,
+            \begin{enumerate}
+                \item \textbf{Closure:} If $a, b \in \N$, then $a + b \in \N$.
+                \item \textbf{Associativity:} For all $a,b,c \in \N$ $$(a+b)+c = a+(b+c).$$
+                \item \textbf{Identity:} For all $a \in \N$ $$a+0=0+a=a.$$ We call $0$ the \textbf{additive identity} in $\N$.
+                \item \textbf{Commutativity:} For all $a,b \in \N$ $$a+b=b+a.$$
+                \item \textbf{Cancellation Property:} For all $a,b,c \in \N$ $$\text{if } a+c = b+c \text{, then } a = b.$$
+            \end{enumerate}
+        \end{theorem}
+
+        The closure property indicates that the sum of two natural numbers is also a natural number; we call the set of natural numbers "closed" under addition. The associative property shows that, in a string of numbers added together, it need not matter which two are added together first. We can add from right to left, left to right, or start at some arbitrary point in the middle. The identity property shows the existence of an "identity" under addition (in this case $0$), where a number remains unchanged when added to the identity. The commutativity property shows that switching the order of addends has no effect on the sum.\sidenote{Using associativity and commutativity together allows for incredible flexibility in performing a long string of addition in whatever way feels most convenient or simple to us.} The cancellation law shows that if adding the same number to addends results in the same sum, the initial addends must also be the same.
+
+        \newthought{The binary operation of} \textbf{multiplication} can be defined on the natural numbers as the act of repeated addition. We define $\cdot:\N^2 \to \N$ by:
+        $$\cdot(a,b) = a\cdot b = \underbrace{a + a + \cdots + a}_{b \text{ times}}.$$ We say $a$ and $b$ are the \textbf{factors} and $ab$ is the \textbf{product}.\sidenote{We often omit the dot entirely and just express the product as $ab$.} The multiplication operation also possesses many nice properties (which can also be proven) that allow for ease of computation.
+
+        \begin{theorem}[Properties of Multiplication]\label{thm:PoM}
+            When defined on \N,
+            \begin{enumerate}
+                \item Multiplication is closed.
+                \item Multiplication is associative.
+                \item The \textbf{multiplicative identity} is $1$.
+                \item Multiplication is commutative.
+                \item \textbf{Cancellation Property:} For all $a,b,c \in \N$ such that $c \neq 0$ $$\text{if } ac=bc \text{, then } a=b.$$
+                \item \textbf{Zero Property:} For all $a \in \N$ $$a\cdot 0 = 0 \cdot a = 0.$$
+                \item \textbf{Zero Product Property:} For all $a,b \in \N$ $$\text{if } ab=0 \text{, then } a=0 \text{ or } b=0.$$
+                \item \textbf{Distributivity:} For all $a,b,c \in \N$ $$a(b+c) = ab + ac.$$
+            \end{enumerate}
+        \end{theorem}
+
+
+    \section{Rational Numbers}\label{sec:rats}

@@ -1,0 +1,51 @@
+\input{preface}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\blankpage
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+\listoffigures
+\listoftables
+\listoftheorems
+
+\chapter{Introduction}
+    % Assumption about knowing how to add multiply divide and subtract
+
+\mainmatter
+\part{Preliminaries}\label{pt:prelim}
+
+    \input{Chapters/Logic}
+    
+    \input{Chapters/Set Theory}
+    
+\part{Arithmetic}\label{pt:arithmetic}
+
+    \input{Chapters/Standard Arithmetic}
+    
+    \chapter{Number Theory}\label{ch:num}
+
+\part{Algebra}\label{pt:alg}
+
+\part{Geometry}\label{pt:geo}
+
+    \chapter{Circles}\label{ch:circles}
+
+    \chapter{Trigonometry}\label{ch:trig}
+
+\part{Data Analysis}\label{pt:data}
+
+    \chapter{Combinatorics}\label{ch:combo}
+
+    \chapter{Discrete Probability}\label{ch:prob}
+
+\part*{Bibliography and Index}
+\backmatter
+\bibliography{sample-handout}
+\bibliographystyle{plainnat}
+\printindex
+
+\end{document}

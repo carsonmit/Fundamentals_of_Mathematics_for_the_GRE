@@ -1,0 +1,101 @@
+\chapter{Set Theory}\label{ch:set}
+
+    \section{Sets}
+        \begin{definition}[Set]\label{def:set}\index{set}
+            A \textbf{set} is an \emph{unordered} collection of \emph{distinct} elements.
+        \end{definition}
+
+        Note the emphasis on the keywords \emph{unordered} \sidenote{A set has no order of elements, meaning, for example, the sets $\{a,b,c\}$ and $\{c,a,b\}$ are considered the same set.} and \emph{distinct}.\sidenote{Elements cannot be members of a set more than once; they are either a member or not a member. As an example, $\{a,a,b,c\}$ is really just the set $\{a,b,c\}$.}
+        We can write out the contents of a set explicitly using brackets: e.g. $$S = \{2,4,6,8 \},$$ or by specifying some property: $$S = \{x: x \text{ is an even integer between $0$ and $10$}\},$$ read "the set of all $x$ such that $x$ is an even integer between $0$ and $10$."
+
+        If $x$ is an element of the set $S$, we write $x \in S$; otherwise, we write $x \not\in S$. Typically, lowercase letters denote elements and uppercase letters denote sets, with some exceptions to be discussed later.
+
+        We say two sets $A$ and $B$ are \textbf{equivalent} when they have the same elements. In other terms, $A=B$ when $\forall x(x\in A \longleftrightarrow x\in B)$. The unique set with no elements is called the \textbf{empty set}\index{set!empty set} and is denoted by the symbol $\empt$. A set with exactly one element is a \textbf{singleton}\index{set!singleton}.
+
+        \newthought{It is a common theme in mathematics} that once an object of study is specified, smaller components of that object that constitute an object in their own right are studied as well -- especially their relationship to the larger ambient object. This begins in set theory.
+
+        \begin{definition}[Subset]\label{def:subset}\index{set!subset}
+            A set $A$ is a \textbf{subset} of a set $B$ when every element of $A$ is an element of $B$, denoted $A \subseteq B$. $$\forall x (x \in A \longrightarrow x\in B)$$
+        \end{definition}
+
+        It is vacuously true that any set $A$ is a subset of itself, $A \subseteq A$. In fact, every set has two \textbf{trivial subsets}, itself and $\empt$. We say $A$ is a \textbf{proper subset} of $B$ when $A \subseteq B$ \emph{and} there exists some element of $B$ that is not an element of $A$, denoted $A \subset B$.\sidenote{For example, $\{a,b,c\}$ is a proper subset of $\{a,b,c,d\}$.} Further, we can say $A=B$ if and only if $A \subseteq B$ \emph{and} $B \subseteq A$; in fact, this is often the method used in practice to show two sets are equivalent -- prove each set is a subset of the other.
+
+    \section{Set Operations}\label{sec:setops}\index{set operations}
+    % Universal set
+        \newthought{We can perform well-defined operations} on existing sets to produce new sets.
+
+        \begin{definition}[Union]\label{def:union}\index{set operations!union}
+            The \textbf{union} of sets $A$ and $B$ is the set $$A\cup B = \left\{x\in U: (x\in A) \lor (x\in B)\right\}.$$
+        \end{definition}
+
+        \begin{marginfigure}
+            \input{Figures/union}
+            \caption{The set $A \cup B$}
+            \label{fig:union}
+            \setfloatalignment{t}
+        \end{marginfigure}
+        
+        This means that $x \in A \cup B$ exactly when $x$ is a member of $A$, or a member of $B$, or potentially a member of both $A$ and $B$. 
+        On the other hand, we can define:
+
+        \begin{definition}[Intersection]\label{def:intersec}\index{set operations!intersection}
+            The \textbf{intersection} of sets $A$ and $B$ is the set $$A\cap B = \left\{x\in U: (x\in A) \land (x\in B)\right\}.$$
+        \end{definition}
+
+        \begin{marginfigure}
+            \input{Figures/intersection}
+            \caption{The set $A \cap B$}
+            \label{fig:intersection}
+            \setfloatalignment{t}
+        \end{marginfigure} 
+
+        We have $x \in A \cap B$ if and only if $x$ is both a member of $A$ and a member of $B$. 
+        
+        One can readily observe that $(A \cap B) \subseteq (A \cup B)$, with $(A\cap B) = (A \cup B)$ if and only if $A=B$; otherwise, $(A \cap B) \subset (A \cup B)$. We say two sets $A$ and $B$ are \textbf{disjoint}\index{set!disjoint sets} when they share no elements in common, i.e. $A \cap B = \empt$.
+
+        \begin{definition}[Difference]\label{def:diff}\index{set operations!set difference}
+            The \textbf{difference} of sets $A$ and $B$ is the set $$A - B = \left\{x\in U: (x\in A) \land (x\not\in B)\right\}.$$
+        \end{definition}
+
+        \begin{marginfigure}
+            \input{Figures/difference}
+            \caption{The set $A - B$}
+            \label{fig:difference}
+            \setfloatalignment{t}
+        \end{marginfigure}
+
+        This represents the set $A$ with everything shared in common with $B$ removed. This implies $(A - B) \cap B = \empt$ and $(A-B) \subseteq A$, with equality when $A$ and $B$ are disjoint.
+
+        \begin{definition}[Complement]\label{def:comp}\index{set operations!complement}
+            The \textbf{complement} of a set $A$ with respect to its ambient universe $U$ is the set $$A^c = \left\{x\in U: x\not\in A\right\}.$$
+        \end{definition}
+
+        \begin{marginfigure}
+            \input{Figures/complement}
+            \caption{The set $A^c$}
+            \label{fig:complement}
+            \setfloatalignment{t}
+        \end{marginfigure}
+
+        The complement of $A$ is all elements in the defined universe $U$ that are not in $A$. These definitions allow for some important properties of set operations, which can all be proven from definitions if desired; they should all be studied carefully and well-understood.
+
+        \begin{theorem}[Set Properties]\label{thm:setprop}
+            The following hold for all sets:
+            \begin{enumerate}
+                \item \textbf{Identity:} $A \cap U = A$ and $A \cup \empt = A$.
+                \item \textbf{Domination:} $A \cup U = U$ and $A \cap \empt = \empt$.
+                \item \textbf{Idempotence:} $A \cup A = A$ and $A \cap A = A$.
+                \item \textbf{Double Complementation:} $(A^c)^c = A$.
+                \item \textbf{Complement Operations:} $A \cup A^c = U$ and $A \cap A^c = \empt$.
+                \item \textbf{Commutativity:} $A \cup B = B \cup A$ and $A \cap B = B \cap A$.
+                \item \textbf{Absorption:} $A \cup (A\cap B) = A$ and $A \cap (A \cup B) = A$.
+                \item \textbf{DeMorgan's Laws:} $$(A \cup B)^c = A^c \cap B^c$$ $$(A \cap B)^c = A^c \cup B^c$$
+                \item \textbf{Associativity:} $$(A \cup B) \cup C = A \cup (B \cup C)$$ $$(A \cap B) \cap C = A \cap (B \cap C)$$
+                \item \textbf{Distributivity:} $$A \cup (B \cap C) = (A\cup B) \cap (A \cup C)$$ $$A \cap (B \cup C) = (A\cap B) \cup (A \cap C)$$
+            \end{enumerate}
+        \end{theorem}
+
+        %natural numbers definition, binary operations
+        %ordering
+
+

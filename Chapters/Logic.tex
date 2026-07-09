@@ -1,0 +1,180 @@
+\chapter{Logic}\label{ch:logic}
+
+    \section{Propositional Logic}\label{sec:proplog}
+        \begin{definition}[Proposition]\label{def:prop}\index{proposition}
+            A \textbf{proposition} is a statement that is either true or false.
+        \end{definition}
+
+        We often denote propositions with letters like $p,q$, or $r$. Further, we denote the truth value of a proposition with $T$ or $F$ to indicate the proposition is true or false, respectively. The area of logic that deals with propositions is \textbf{propositional logic}\index{propositional logic}. We often examine more complicated propositions, called \textbf{compound propositions}, that are formed from existing propositions using logical operators\index{logical operators}.
+
+        There is one unary logical operator, i.e., a logical operator that applies to exactly one proposition to create a new proposition.
+
+        \begin{definition}[Negation]\label{def:neg}\index{logical operators!negation}
+            The \textbf{negation} of a proposition $p$ is $\neg p$, which is the proposition "not $p$".
+        \end{definition}
+
+        This operator negates the truth value of $p$, meaning $\neg p = T$ precisely when $p=F$, and $\neg p = F$ when $p=T$.
+
+        \newthought{When an operator} applies to at least two propositions, it is a \textbf{connective}\index{logical operators!connectives}, and forms what is known as a \textbf{compound proposition}\index{compound propositions}.
+        
+        \begin{definition}[Disjunction]\label{def:disj}\index{logical operators!connectives!disjunction}
+            The \textbf{disjunction} of propositions $p$ and $q$ is $p \lor q$, which is the proposition "$p$ or $q$".
+        \end{definition}
+
+        The disjunction of $p$ and $q$ is true when at least one of $p$ and $q$ are true, possibly both. It is false precisely when both $p$ and $q$ are false. 
+        
+        \begin{definition}[Conjunction]\label{def:conj}\index{logical operators!connectives!conjunction}
+            The \textbf{conjunction} of propositions $p$ and $q$ is $p \land q$, which is the proposition "$p$ and $q$".
+        \end{definition}
+
+        The conjunction of $p$ and $q$ is true precisely when $p$ and $q$ are \emph{both} true, and false otherwise.\sidenote{The conjunction can be thought of as "both $p$ is true \emph{and} $q$ is true".} In the case where we want to represent the proposition "exactly one of $p$ and $q$ is true, but not both", we can use the \textbf{exclusive-or}\index{logical operators!connectives!exclusive-or}, denoted by $p \oplus q$. The exclusive-or is false exactly when $p$ and $q$ take the same truth value, true otherwise.
+
+        \newthought{A visual tool} that can be helpful for understanding the conditions under which a given compound proposition is true, based on the truth values of its constituent propositions, is a \textbf{truth table}\index{truth tables}. A truth table is an array that highlights all possible combinations of constituent propositions' truth values.
+
+        \begin{example}[Truth Table for a Conjunction]\label{ex:conjtt}
+            The truth table for the conjunction $p \land q$ is:
+            \input{Tables/conjunctiontt}
+            
+            \noindent and we can observe that the four possible combinations for the simultaneous truth values of $p$ and $q$ are included in the rows left of the double vertical line. The truth values for $p \land q$ on the right correspond to the combination of values for $p$ and $q$ in their respective row. \qed
+        \end{example}
+        
+        \newthought{The next type of connective} is named the \textbf{conditional operator} or \textbf{implication}.
+
+        \begin{definition}[Implication]\label{def:imp}\index{logical operators!connectives!implication}
+            Given propositions $p$ and $q$, the \textbf{implication} $p \rightarrow q$ is the proposition "if $p$, then $q$".
+        \end{definition}
+
+        The implication $p \to q$ is false exactly when $p$ is false and $q$ is true, and true otherwise. We call the proposition $p$ the \textbf{antecedent} or \textbf{premise}, and the proposition $q$ the \textbf{consequent} or \textbf{conclusion}.
+        
+        It is important to note that a logical implication need not depend on our intuition of causation to be true. For example, $p \to q$ is true when both $p$ and $q$ are true; so, if $p$ is the proposition "the author's name is Carson" and $q$ is the proposition "$2+2=4$", then $p \to q$ ("If the author's name is Carson, then $2+2=4$") is true. This, however, does not necessarily mean that the author's name being Carson causes $2+2=4$ to be true.
+
+        Further, it can cause some confusion to understand that $p \to q$ is true whenever $p$ is false. Consider the following example to illustrate. Let $p$ be the proposition "unicorns are real". In this case, regardless of what $q$ is, we say that $p \to q$ is true because, in a universe where unicorns are real, it's not outside the realm of possibility that whatever $q$ claims is also true, as we have no legitimate insight into what such a universe may look like or consist of.
+
+        The implication has some relatives, one of which is logically equivalent, a topic we will discuss in greater detail momentarily. The \textbf{converse}\label{def:conv}\index{logical operators!connectives!converse} of the implication $p \to q$ is the proposition $q \to p$. The \textbf{inverse}\label{def:inv}\index{logical operators!connectives!inverse} of the implication $p \to q$ is the proposition $(\neg p) \to (\neg q)$. Note that the converse switches the order of the antecedent and consequent, while the inverse negates each, respectively, but does not switch the order. 
+
+        \begin{definition}[Contrapositive]\label{def:contrapos}\index{logical operators!connectives!contrapositive}
+            The \textbf{contrapositive} of the implication $p \to q$ is the proposition $(\neg q) \to (\neg p)$.
+        \end{definition}
+
+        The contrapositive, as we will prove, is entirely equivalent to the original implication. Meaning, the truth value of one is \emph{always} the same as the truth value of the other. Finally, we introduce the last major logical connective.
+
+        \begin{definition}[Biconditional]\label{def:bicon}\index{logical operators!connectives!biconditional}
+            The \textbf{biconditional} of propositions $p$ and $q$ is the proposition $(p \to q) \land (q \to p)$, denoted $p \longleftrightarrow q$ and read as "$p$ if and only if $q$". 
+        \end{definition}
+        
+        We can observe that $p \longleftrightarrow q$ is true exactly when $p$ and $q$ take on the same truth value, false otherwise\sidenote{$p \longleftrightarrow q$ is false exactly when $p \oplus q$ is true; i.e. $p \llra q$ is equivalent to $\neg (p \oplus q)$.}. This should indicate to the reader that, in a sense, $p$ and $q$ are equivalent when $p \longleftrightarrow q$ is a true proposition.
+        
+        As a note on English translations\sidenote{Oftentimes, you may see authors abbreviate the phrase "if and only if" as "iff".}, some phrases that often give students trouble are "$p$ if $q$" and "$p$ only if $q$". The former is equivalent to the implication $q \to p$ while the latter is equivalent to the implication $p \to q$. Thus, if we see the phrase "if and only if", we can recognize we are working with a biconditional. 
+
+        \newthought{Given the implication} $p \to q$, we say that $p$ is a \textbf{sufficient} condition for $q$, and $q$ is a \textbf{necessary} condition for $p$. We say $p$ is sufficient because $p$ being true is "enough" to assure that $q$ is true, but it's possible there are other conditions besides $p$ that would also satisfy $q$. Similarly, we say $q$ is necessary because, for $p$ to be true, it is required that $q$ be true.
+
+        We now note that there exists an order in which logical operators are executed. It is best practice to always use parentheses, as used previously, to indicate smaller atomic parts within a compound proposition. Contents within parentheses are always evaluated first; then, the negation operator applies to the proposition most right-adjacent to it; then, the conjunction and disjunction operators are applied; then, the implication; finally, the biconditional.
+
+        Below, for reference, are included truth tables containing all of the compound propositions covered thus far, as well as the implication and its various related forms.
+
+        \input{Tables/compoundtt}
+        \input{Tables/implicationtt}
+
+        \newthought{We now define} a few types of categories with respect to compound propositions. A compound proposition falls into exactly one of three categories:
+
+        \begin{definition}[Tautology]\label{def:tautology}\index{compound propositions!tautology}
+            A compound proposition $P$ is a \textbf{tautology} if $P$ is always true, i.e. there is no circumstance under which the truth table of $P$ contains a false $F$ entry.
+        \end{definition}
+        
+        \begin{definition}[Contradiction]\label{def:contradiction}\index{compound propositions!contradiction}
+            A compound proposition $P$ is a \textbf{contradiction} if $P$ is always false, i.e. there is no circumstance under which the truth table of $P$ contains a true $T$ entry.
+        \end{definition}
+
+        Any statement that could be true or false depending on the truth values of its atomic components is called a \textbf{contingency}; thus, a contingency is any compound proposition that is neither a tautology nor contradiction. We say that $P$ is \textbf{satisfiable} when it is either a tautology or contingency; i.e., there is some arrangement of the atomic constituents of $P$ that makes $P$ a true proposition; there is an instance where $P$ is not false. Further, $P$ is \textbf{unsatisfiable} when $P$ is a contradiction or, equivalently, $(\neg P)$ is a tautology. An assignment of truth values to the atomic constituents of a satisfiable $P$ that makes $P$ true is called a \textbf{solution}.
+
+        \newthought{We may now formally define} what it means for two propositions to be equivalent in logic.
+
+        \begin{definition}[Logical Equivalence]\label{def:logeq}\index{logical equivalence}
+            Compound propositions $P$ and $Q$ are \textbf{logically equivalent}, denoted $P \equiv Q$, when $P \longleftrightarrow Q$ is a tautology.
+        \end{definition}
+
+        In other words, $P \equiv Q$ when they share the same truth table (always take on the same truth value). Equivalent forms hold great importance in logic because they allow for one compound proposition to be substituted for another at any point, which enables different modes of understanding or proving a given proposition, oftentimes to the benefit of simplicity or intuition. Below we share some equivalences involving a single compound proposition.  
+
+        \begin{theorem}[Equivalent Logical Forms]\label{thm:eqlogforms}
+            The following hold:
+            \begin{enumerate}
+                \item \textbf{Identity:} $P \land T \equiv P$ and $P \lor F \equiv P$.
+                \item \textbf{Domination:} $P \lor T \equiv T$ and $P \land F \equiv F$.
+                \item \textbf{Idempotence:} $P \lor P \equiv P$ and $P \land P \equiv P$.
+                \item \textbf{Double Negation:} $\neg(\neg P) \equiv P$.
+                \item \textbf{Negation Operations:} $P \lor (\neg P) \equiv T$ and $P \land (\neg P) \equiv F$.
+            \end{enumerate}
+        \end{theorem}
+
+        Now, we share some equivalences involving two or more compound propositions.
+
+        \begin{theorem}[Equivalent Logical Forms II]\label{thm:eqlogforms2}
+            The following hold:
+            \begin{enumerate}
+                 \item \textbf{Commutativity:} $P \lor Q \equiv Q \lor P$ and $P \land Q \equiv Q \land P$.
+                \item \textbf{Absorption:} $P \lor (P \land Q) \equiv P$ and $P \land (P \lor Q) \equiv P$.
+                \item \textbf{DeMorgan's Laws:} $$\neg(P \lor Q) \equiv (\neg P) \land (\neg Q)$$ $$\neg(P \land Q) \equiv (\neg P) \lor (\neg Q)$$
+                \item \textbf{Associativity:} $$(P \lor Q) \lor R \equiv P \lor (Q \lor R)$$ $$(P \land Q) \land R \equiv P \land (Q \land R)$$
+                \item \textbf{Distributivity:} $$P \lor (Q \land R) \equiv (P \lor Q) \land (P \lor R)$$ $$P \land (Q \lor R) \equiv (P \land Q) \lor (P \land R)$$
+            \end{enumerate}
+        \end{theorem}
+
+        Next, we share some equivalences involving implications.
+
+        \begin{theorem}[Equivalent Logical Forms III]\label{thm:eqlogforms3}
+            The following hold:
+            \begin{enumerate}
+                \item \textbf{Contraposition:} $P \to Q \equiv (\neg Q) \to (\neg P)$.
+                \item \textbf{Implication-Disjunction Relationship:} $$P \lor Q \equiv (\neg P) \to Q \text{ and } P \to Q \equiv (\neg P) \lor Q.$$
+                \item \textbf{Implication-Conjunction Relationship:} $$P \land Q \equiv \neg\left(P \to (\neg Q)\right) \text{ and } \neg(P \to Q) \equiv P \land (\neg Q).$$
+                \item \textbf{Distributivity over Premises:} $$(P \lor Q) \to R \equiv (P \to R) \land (Q \to R)$$ $$(P \land Q) \to R \equiv (P \to R) \lor (Q \to R)$$
+                \item \textbf{Distributivity over Conclusions:} $$P \to (Q \lor R) \equiv (P \to Q) \lor (P \to R)$$ $$P \to (Q \land R) \equiv (P \to Q) \land (P \to R)$$
+            \end{enumerate}
+        \end{theorem}
+
+        Finally, we conclude with some equivalences involving biconditionals.
+
+        \begin{theorem}[Equivalent Logical Forms IV]\label{thm:eqlogforms4}
+            The following hold:
+            \begin{enumerate}
+                \item $P \longleftrightarrow Q \equiv (\neg P) \longleftrightarrow (\neg Q)$.
+                \item $P \longleftrightarrow Q \equiv (P \land Q) \lor \left((\neg P) \land (\neg Q)\right) \equiv \neg(P \oplus Q)$.
+                \item $P \longleftrightarrow Q \equiv \left(P \lor (\neg Q)\right) \land \left((\neg P) \lor Q\right)$.
+                \item $\neg(P \longleftrightarrow Q) \equiv P \longleftrightarrow (\neg Q) \equiv (\neg P) \longleftrightarrow Q$.
+                \item $\neg(P \longleftrightarrow Q) \equiv (P \lor Q) \land \left((\neg P) \lor (\neg Q)\right) \equiv P \oplus Q$.
+                \item $\neg(P \longleftrightarrow Q) \equiv \left(P \land (\neg Q)\right) \lor \left((\neg P) \land Q\right)$.
+            \end{enumerate}
+        \end{theorem}
+        
+
+    \section{First-Order Logic}\label{sec:folog}
+
+        \textbf{First-order logic} or \textbf{predicate logic} is an important extension of propositional logic that allows for a large expansion to the possible sentences that can be converted into symbolic form and analyzed for validity, making it an incredibly valuable tool in the assessment of arguments.
+
+        In propositional logic, we assume that each atomic proposition ($p$, $q$, $r$, etc.) can be assessed for soundness and declared absolutely true or absolutely false. In other words, once a proposition is specified, we can with certainty decide that it is a true proposition or a false proposition. In first-order logic, we allow for our atomic statements to possess a degree of variability -- even when specified, there are cases where a statement can be true and other cases where it can be false, not possessing an intrinsic truth value. This leads to two important definitions: the qualities that define claims (\textbf{predicates}) and the extent to which the claims can be true over a specified domain (\textbf{quantifiers}). The study of these two concepts and their relationships is what comprises the foundation of first-order logic.
+
+        \begin{definition}[Predicate]\label{def:predicate}\index{predicate}
+            A \textbf{predicate} is a property that can be applied to an object/subject to produce a proposition.
+        \end{definition}
+
+        Because a predicate depends on an object to become a proposition, the combination of a predicate and unknown object is referred to as an \textbf{open proposition} or \textbf{propositional function}.
+
+        \begin{example}[Predicate]\label{ex:predicate}
+            The statement "\ldots is a city in California" is an open proposition because its truth value entirely depends on what words take the place of the ellipsis. The predicate/property here is being a city in California. It becomes a true proposition if we were to substitute "San Francisco" for the ellipsis, but a false proposition if we were to substitute "New York City" for the ellipsis.
+
+            Instead of an ellipsis, it is commonplace to use letters like $x$, $y$, and $z$ to denote the unknown elements of an open proposition. If we say the predicate $P$ is being a city in California, then $P(x)$ can be used to denote the open proposition "$x$ is a city in California". $P(x)$ has no intrinsic truth value, but when values are substituted for $x$, we have definite propositions with truth values. $P($San Francisco$) = T$ and $P($New York City$) = F$. \qed
+        \end{example}
+
+        Open propositions with more than one variable element are commonplace. If a predicate depends on two inputs, we may write $P(x,y)$; further, for $n$ inputs, we may write $P(x_1, x_2, \ldots, x_n)$.
+
+        %universal set
+
+        % natural language translations (symbols will be dropped in many cases in future use)
+
+
+    \section{Proofs}\label{sec:proof}
+        % define theorems, lemmas, corollaries
+
+
+
+    
