@@ -23,7 +23,7 @@ jobs:
       - name: Copy PDF
         run: |
           mkdir -p website/pdf
-          cp main.pdf website/pdf/main.pdf
+          cp GRE-Textbook.pdf website/pdf/GRE-Textbook.pdf
 
       - name: Save PDF to website
         run: |
