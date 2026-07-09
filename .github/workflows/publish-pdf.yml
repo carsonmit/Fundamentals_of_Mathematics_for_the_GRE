@@ -3,7 +3,7 @@ name: Copy PDF to Website
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   copy-pdf:
