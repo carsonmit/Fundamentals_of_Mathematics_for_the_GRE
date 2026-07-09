@@ -30,6 +30,6 @@ jobs:
           cd website
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add pdf/main.pdf
+          git add pdf/GRE-Textbook.pdf
           git commit -m "Update PDF" || exit 0
           git push
