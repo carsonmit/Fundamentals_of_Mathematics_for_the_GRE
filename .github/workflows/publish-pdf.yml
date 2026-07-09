@@ -1,0 +1,35 @@
+name: Copy PDF to Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download LaTeX repository
+        uses: actions/checkout@v4
+
+      - name: Download website repository
+        uses: actions/checkout@v4
+        with:
+          repository: carsonmit/carsonmit.github.io
+          token: ${{ secrets.WEBSITE_TOKEN }}
+          path: website
+
+      - name: Copy PDF
+        run: |
+          mkdir -p website/pdf
+          cp main.pdf website/pdf/main.pdf
+
+      - name: Save PDF to website
+        run: |
+          cd website
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add pdf/main.pdf
+          git commit -m "Update PDF" || exit 0
+          git push
